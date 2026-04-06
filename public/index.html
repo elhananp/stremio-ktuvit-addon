@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>כתוביות עברית ל-Stremio</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #0f0f13;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: #1a1a24;
+      border: 1px solid #2a2a3a;
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .emoji { font-size: 52px; margin-bottom: 20px; }
+
+    h1 {
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #888;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #7b2fbe22;
+      border: 1px solid #7b2fbe55;
+      color: #b07ee0;
+      font-size: 12px;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 36px;
+    }
+
+    .install-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #7b2fbe, #9b4fde);
+      color: #fff;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px #7b2fbe55;
+      cursor: pointer;
+      border: none;
+    }
+
+    .install-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px #7b2fbe77;
+    }
+
+    .install-btn:active { transform: translateY(0); }
+
+    .manual {
+      margin-top: 24px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .manual span {
+      color: #777;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .url-box {
+      display: none;
+      margin-top: 12px;
+      background: #0f0f18;
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      direction: ltr;
+      text-align: left;
+      color: #888;
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      margin-top: 8px;
+      background: #2a2a3a;
+      border: 1px solid #333;
+      color: #aaa;
+      padding: 5px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .copy-btn:hover { background: #333; color: #fff; }
+
+    .divider { border: none; border-top: 1px solid #1e1e2e; margin: 36px 0 24px; }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .feature {
+      background: #13131d;
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .feature .icon { font-size: 20px; margin-bottom: 6px; }
+    .feature strong { color: #ddd; display: block; margin-bottom: 2px; }
+
+    .security {
+      font-size: 12px;
+      color: #444;
+      line-height: 1.7;
+    }
+    .security a { color: #7b2fbe; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="emoji">🎬</div>
+    <h1>כתוביות עברית ל-Stremio</h1>
+    <p class="subtitle">כתוביות אוטומטיות מ-ktuvit.me</p>
+    <span class="badge">Community Addon · חינמי</span>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">⚡</div>
+        <strong>אוטומטי</strong>
+        כתוביות נטענות לבד
+      </div>
+      <div class="feature">
+        <div class="icon">🇮🇱</div>
+        <strong>עברית</strong>
+        ktuvit.me — הארכיון הגדול
+      </div>
+      <div class="feature">
+        <div class="icon">🎭</div>
+        <strong>סרטים וסדרות</strong>
+        כולל עונות ופרקים
+      </div>
+      <div class="feature">
+        <div class="icon">🔒</div>
+        <strong>בטוח</strong>
+        ללא פרטים אישיים
+      </div>
+    </div>
+
+    <a class="install-btn" id="installBtn" href="#">
+      ⚡ התקן ב-Stremio
+    </a>
+
+    <div class="manual">
+      לא עובד? <span onclick="toggleUrl()">הצג קישור ידני</span>
+    </div>
+    <div class="url-box" id="urlBox"></div>
+    <button class="copy-btn" id="copyBtn" style="display:none" onclick="copyUrl()">העתק קישור</button>
+
+    <hr class="divider" />
+
+    <p class="security">
+      מבוסס על <a href="https://www.ktuvit.me" target="_blank">ktuvit.me</a> ·
+      קוד פתוח · ללא איסוף מידע
+    </p>
+  </div>
+
+  <script>
+    const manifestUrl = window.location.origin + '/manifest.json';
+    const stremioUrl = 'stremio://' + window.location.host + '/manifest.json';
+
+    document.getElementById('installBtn').href = stremioUrl;
+    document.getElementById('urlBox').textContent = manifestUrl;
+
+    function toggleUrl() {
+      const box = document.getElementById('urlBox');
+      const btn = document.getElementById('copyBtn');
+      const visible = box.style.display === 'block';
+      box.style.display = visible ? 'none' : 'block';
+      btn.style.display = visible ? 'none' : 'inline-block';
+    }
+
+    function copyUrl() {
+      navigator.clipboard.writeText(manifestUrl);
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = 'הועתק ✓';
+      setTimeout(() => btn.textContent = 'העתק קישור', 2000);
+    }
+  </script>
+</body>
+</html>
