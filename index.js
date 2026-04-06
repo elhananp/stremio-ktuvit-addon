@@ -56,6 +56,8 @@ const CACHE_TTL = 6 * 60 * 60 * 1000;
 
 const app = express();
 
+app.set('trust proxy', 1); // trust Render's reverse proxy so req.protocol = 'https'
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', '*');
