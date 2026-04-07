@@ -79,8 +79,9 @@ app.get('/manifest.json', (req, res) => res.json(manifest));
 
 // Subtitles
 // סרט:   /subtitles/movie/tt1234567.json
+// סרט עם מידע:  /subtitles/movie/tt1234567/filename=...json
 // סדרה:  /subtitles/series/tt1234567:1:1.json
-app.get('/subtitles/:type/:id.json', async (req, res) => {
+app.get(['/subtitles/:type/:id.json', '/subtitles/:type/:id/:extra'], async (req, res) => {
   if (!ready) return res.json({ subtitles: [] });
 
   const { type } = req.params;
