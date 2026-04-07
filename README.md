@@ -111,7 +111,7 @@ open http://localhost:7000
 
 - **URL ציבורי:** `https://ktuvit-stremio-addon.onrender.com`
 - **Auto-deploy:** כל push ל-`main` מפרס אוטומטית
-- **Keep-alive:** GitHub Actions מבצע ping כל 5 דקות
+- **Keep-alive:** cron-job.org + GitHub Actions מבצעים ping כל 5 דקות
 
 ### פריסה מחדש
 ```bash

@@ -9,6 +9,7 @@
 - Render service ID: `srv-d7a21g2a214c73ct44ug`
 - GitHub repo: `elhananp/stremio-ktuvit-addon`
 - Auto-deploy: כל push ל-main → Render מפרס אוטומטית
+- Keep-alive: cron-job.org (job ID: 7459126) + GitHub Actions — פינג כל 5 דקות
 
 ## קבצים חשובים
 - `index.js` — שרת Express: manifest, subtitle routes, proxy
