@@ -40,11 +40,11 @@ const manifest = {
   version: '1.0.0',
   name: 'כתוביות עברית — Ktuvit',
   description: 'כתוביות עבריות אוטומטיות מ-ktuvit.me לכל סרט וסדרה',
-  resources: ['subtitles'],
+  resources: [{ name: 'subtitles', types: ['movie', 'series'], idPrefixes: ['tt'] }],
   types: ['movie', 'series'],
   idPrefixes: ['tt'],
   catalogs: [],
-  behaviorHints: { adult: false },
+  behaviorHints: { adult: false, configurable: false },
 };
 
 // ─── Cache ────────────────────────────────────────────────────────────────────
