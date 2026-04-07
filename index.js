@@ -58,18 +58,11 @@ const app = express();
 
 app.set('trust proxy', 1); // trust Render's reverse proxy so req.protocol = 'https'
 
-const recentRequests = [];
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', '*');
-  if (req.path !== '/favicon.ico') {
-    recentRequests.unshift({ time: new Date().toISOString(), path: req.path, ua: req.get('user-agent') || '' });
-    if (recentRequests.length > 20) recentRequests.pop();
-  }
   next();
 });
-
-app.get('/debug/requests', (req, res) => res.json(recentRequests));
 
 // דף הגדרות
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
