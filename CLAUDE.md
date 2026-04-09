@@ -38,6 +38,13 @@ npm start   # http://localhost:7000
 - Session ktuvit.me מתחדש כל 10 שעות
 - `app.set('trust proxy', 1)` — חיוני ל-HTTPS URLs מאחורי Render
 
+## סטטוס נוכחי (עדכון אחרון)
+- השירות הושעה על ידי Render ("suspended by owner") — צריך להפעיל מחדש דרך Render dashboard או API
+- Render API key הישן (rnd_KfIHEAMEmJ0kN1QjEF3mXn3ChEFw) בוטל — צריך ליצור חדש
+- cron-job.org פועל (job ID: 7459126) עם API key: c4zem5CAUKI39se7iyi0DRya4F+nC/uG+nH90fRzpNA=
+- Render service ID: srv-d7a21g2a214c73ct44ug
+- Render workspace: tea-d7a1l14hg0os73baoeqg
+
 ## מה לא לשנות בלי סיבה
 - מבנה ה-manifest (idPrefixes, resources format)
 - הנתיב `/sub/:ktuvitId/:filename` — Stremio מצפה לו
